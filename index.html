@@ -1,0 +1,29 @@
+<html>
+
+<head>
+<title>News</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<script src="utils/componentBuilder.js"></script>
+<script src="components/avatar/controller.js"></script>
+<script src="components/post/controller.js"></script>
+<script src="components/post-list/controller.js"></script>
+</head>
+
+<body>
+
+<div id="container"> </div>
+
+<script>
+
+let container = document.querySelector('#container');
+
+buildPostList('')
+    .then(postListDOM => {
+        container.appendChild(postListDOM);
+    });
+
+</script>
+
+</body>
+
+</html>
