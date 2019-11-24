@@ -6,7 +6,7 @@
 <script src="utils/componentBuilder.js"></script>
 <script src="components/avatar/controller.js"></script>
 <script src="components/post/controller.js"></script>
-<script src="components/post-list/controller.js"></script>
+<script src="components/wall/controller.js"></script>
 </head>
 
 <body>
@@ -17,9 +17,12 @@
 
 let container = document.querySelector('#container');
 
-buildPostList('')
-    .then(postListDOM => {
-        container.appendChild(postListDOM);
+let getUserId = () => '507f191e810c19729de86001';
+
+let userId = getUserId();
+buildWall(userId)
+    .then(wallDOM => {
+        container.appendChild(wallDOM);
     });
 
 </script>
