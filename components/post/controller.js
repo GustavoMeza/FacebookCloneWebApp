@@ -4,10 +4,18 @@ let postConfig = {
     bind: (model, view) => {
         let avatarPlaceholder = view.querySelector('.avatar');
         let postContentDOM = view.querySelector('.postContent');
+        let likesBannerPlaceholder = view.querySelector('.likesBanner');
+        let commentListPlaceholder = view.querySelector('.commentList');
 
-        postContentDOM.innerText = model.content;
         buildAvatar(model.userId).then(avatarDOM => {
             view.replaceChild(avatarDOM, avatarPlaceholder);
+        });
+        postContentDOM.innerText = model.content;
+        buildLikesBanner(model.id).then(likesBannerDOM => {
+            view.replaceChild(likesBannerDOM, likesBannerPlaceholder);
+        });
+        buildCommentList(model.id).then(commentListDOM => {
+            view.replaceChild(commentListDOM, commentListPlaceholder);
         });
     },
 };
