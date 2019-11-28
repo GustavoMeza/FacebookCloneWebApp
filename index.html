@@ -11,8 +11,10 @@
 <script src="components/avatar/controller.js"></script>
 <script src="components/likesBanner/controller.js"></script>
 <script src="components/comment/controller.js"></script>
+<script src="components/commentComposer/controller.js"></script>
 <script src="components/commentList/controller.js"></script>
 <script src="components/post/controller.js"></script>
+<script src="components/postComposer/controller.js"></script>
 <script src="components/wall/controller.js"></script>
 </head>
 
@@ -27,6 +29,12 @@ let container = document.querySelector('#container');
 let getUserId = () => '507f191e810c19729de86001';
 
 let userId = getUserId();
+
+buildPostComposer(userId)
+    .then(postComposerDOM => {
+        container.appendChild(postComposerDOM);
+    });
+
 buildWall(userId)
     .then(wallDOM => {
         container.appendChild(wallDOM);
