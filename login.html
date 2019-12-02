@@ -1,0 +1,46 @@
+<html>
+
+<head>
+<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+<label>email</label>
+<input id="email" type="text"/>
+<label>password</label>
+<input id="password"type="password"/>
+<button>submit</button>
+
+<script>
+
+let submitDOM = document.querySelector('button');
+let emailDOM = document.querySelector('#email');
+let passwordDOM = document.querySelector('#password');
+
+submitDOM.onclick = () => {
+    let user = {
+        email: emailDOM.value,
+        password: passwordDOM.value,
+    };
+    let config = {
+        method: 'POST',
+        body: JSON.stringify(user),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+    fetch('https://127.0.0.1:5001/Authentication/Login', config)
+        .then(res => res.text())
+        .then(token => {
+            document.cookie = `jwt=${token}`;
+            window.location.href = "http://127.0.0.1:8000/";
+        });
+};
+
+</script>
+
+</body>
+
+</html>

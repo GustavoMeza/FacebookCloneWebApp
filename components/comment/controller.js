@@ -3,10 +3,16 @@ let commentConfig = {
     view: 'components/comment/view.html',
     bind: (model, view) => {
         let avatarPlaceholder = view.querySelector('.avatar');
-        let commentContentDOM = view.querySelector('.commentContent');
+        let bubbleDOM = view.querySelector('.bubble');
+        let namePlaceholder = bubbleDOM.querySelector('.name');
+        let commentContentDOM = bubbleDOM.querySelector('.commentContent');
 
         buildAvatar(model.userId).then(avatarDOM => {
             view.replaceChild(avatarDOM, avatarPlaceholder);
+        });
+
+        buildName(model.userId).then(nameDOM => {
+            bubbleDOM.replaceChild(nameDOM, namePlaceholder);
         });    
         commentContentDOM.innerText = model.content;
     },

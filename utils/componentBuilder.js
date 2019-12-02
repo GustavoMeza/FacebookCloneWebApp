@@ -7,8 +7,7 @@ let componentBuilderFactory = configs => {
         });
 
     return modelId => {
-        let loadModel = fetch(`${configs.model}/${modelId}`)
-            .then( response => response.json() );
+        let loadModel = getJsonFromApi(`${configs.model}/${modelId}`);
         
         let viewPromise = loadTemplate
             .then(template => {

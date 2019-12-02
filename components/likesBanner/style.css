@@ -1,0 +1,23 @@
+.likeCount {
+    color: #666;
+}
+
+
+.likeIcon {
+    background-image: url(http://127.0.0.1:8000/res/fbicon.png);
+    background-repeat: no-repeat;
+    background-size: 104px 328px;
+    height: 16px;
+    width: 16px;
+    content: '';
+    display: inline-block;
+    margin-right: 4px;
+    margin-bottom: 1px;
+    vertical-align: middle;
+    background-position: -51px -266px;
+}
+
+.likesBanner {
+    display: flex;
+    margin: 10px;
+}

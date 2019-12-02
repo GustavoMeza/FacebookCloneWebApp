@@ -1,52 +1,46 @@
 <html>
 
 <head>
-<title>News</title>
+<title>Profile</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="style.css" />
-<link rel="stylesheet" type="text/css" href="components/avatar/style.css" />
-<link rel="stylesheet" type="text/css" href="components/name/style.css" />
-<link rel="stylesheet" type="text/css" href="components/likesBanner/style.css" />
+<link rel="stylesheet" type="text/css" href="styles.css">
 <link rel="stylesheet" type="text/css" href="components/comment/style.css" />
-<link rel="stylesheet" type="text/css" href="components/commentComposer/style.css" />
 <link rel="stylesheet" type="text/css" href="components/post/style.css" />
 <script src="utils/requestHandler.js"></script>
 <script src="utils/componentBuilder.js"></script>
 <script src="components/avatar/controller.js"></script>
-<script src="components/name/controller.js"></script>
 <script src="components/likesBanner/controller.js"></script>
 <script src="components/comment/controller.js"></script>
 <script src="components/commentComposer/controller.js"></script>
 <script src="components/commentList/controller.js"></script>
 <script src="components/post/controller.js"></script>
-<script src="components/postComposer/controller.js"></script>
-<script src="components/wall/controller.js"></script>
+<script src="components/wall_/controller.js"></script>
 </head>
 
 <body>
 
-<div id="container"> </div>
+    <div id="container">
+    </div>
 
 <script>
 
-let getUserId = () => 0;
+const params = new URLSearchParams(window.location.search);  
+const userId = params.get("user"); 
 
-let loadPage = () => {
+let loadPage = () => { 
     let container = document.querySelector('#container');
 
-    let userId = getUserId();
-
-    buildPostComposer(userId)
-        .then(postComposerDOM => {
-            container.appendChild(postComposerDOM);
+    buildAvatar(userId)
+        .then(avatarDOM => {
+            container.appendChild(avatarDOM);
         });
 
-    buildWall(userId)
+    buildWall_(userId)
         .then(wallDOM => {
             container.appendChild(wallDOM);
         });
-};
+
+}
 
 getFromApi('https://127.0.0.1:5001/Authentication/Validate')
     .then( res => {
@@ -55,8 +49,7 @@ getFromApi('https://127.0.0.1:5001/Authentication/Validate')
         }
         return res.text();
     })
-    .then( userId => {
-        getUserId = () => userId;
+    .then(myId => {
         loadPage();
     });
 

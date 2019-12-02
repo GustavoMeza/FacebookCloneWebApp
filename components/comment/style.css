@@ -1,3 +1,23 @@
+.bubble-container {
+    display: flex;
+}
+
+.bubble {
+    display: block;
+    background-color: #eee;
+    padding: 6px 12px;
+    border-radius: 18px;
+}
+
 .comment {
-    margin: 12px 0px;
+    margin: 8px 0px;
+    padding: 0px 8px;
+}
+
+.bubble .name {
+    font-size: 12px;
+}
+
+.comment .avatar {
+    float: left;
 }

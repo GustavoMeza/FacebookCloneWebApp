@@ -1,0 +1,28 @@
+.commentComposer {
+    padding: 8px;    
+    display: flex;
+}
+
+.commentContentContainer {
+    border-radius: 18px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    flex: 1;
+}
+
+.commentContent {
+    height: 22px;
+    border: none;
+    outline: none;
+}
+
+.submitComment {
+    color: #ccc;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    margin-left: 8px;
+    height: 38px;
+    padding: 0px 9px;
+    outline: none;
+}

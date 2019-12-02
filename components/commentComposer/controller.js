@@ -2,23 +2,21 @@ let commentComposerConfig = {
     model: 'https://127.0.0.1:5001/posts',
     view: 'components/commentComposer/view.html',
     bind: (model, view) => {
-        let inputDOM = view.querySelector('input');
-        let buttonDOM = view.querySelector('button');
+        let avatarPlaceholder = view.querySelector('.avatar');
+        let commentContentDOM = view.querySelector('.commentContent');
+        let submitCommentDOM = view.querySelector('.submitComment');
 
-        buttonDOM.onclick = () => {
+        buildAvatar(getUserId()).then(avatarDOM => {
+            view.replaceChild(avatarDOM, avatarPlaceholder);
+        });
+
+        submitCommentDOM.onclick = () => {
             let comment = {
-                content: inputDOM.value,
+                content: commentContentDOM.value,
                 userId: getUserId(),
                 postId: model.id,
             };
-            let config = {
-                method: 'POST',
-                body: JSON.stringify(comment),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            };
-            fetch('https://127.0.0.1:5001/comments', config);
+            postJsonToApi('https://127.0.0.1:5001/comments', comment);
         };
     },
 };
