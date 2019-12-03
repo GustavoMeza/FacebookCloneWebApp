@@ -1,0 +1,97 @@
+<html>
+
+<head>
+<title>Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<link href="components/nav/style.css" rel="stylesheet">
+<link href="components/wall/style.css" rel="stylesheet">
+<link href="components/avatar/style.css" rel="stylesheet">
+<link href="components/name/style.css" rel="stylesheet">
+<link href="components/person/style.css" rel="stylesheet">
+<link href="components/peopleList/style.css" rel="stylesheet">
+<script src="utils/requestHandler.js"></script>
+<script src="utils/componentBuilder.js"></script>
+<script src="components/nav/controller.js"></script>
+<script src="components/avatar/controller.js"></script>
+<script src="components/name/controller.js"></script>
+<script src="components/person/controller.js"></script>
+<script src="components/peopleList/controller.js"></script>
+</head>
+
+<body>
+
+    <div id="container">
+        <div class="wall">
+            <div id="searchBar">
+                <div>
+                    <i class="material-icons">search</i>
+                    <input type="text">
+                </div>
+                <button>Buscar</button>
+            </div>
+        </div>
+    </div>
+
+<style>
+
+#searchBar {
+    background-color: #fff;
+    padding: 8px;
+    display: flex;
+}
+#searchBar > div {
+    display: flex;
+    flex: 1;
+    border-radius: 16px;
+    background-color: #eee;
+    align-items: center;
+}
+#searchBar i {
+    margin: 0 10px;
+    font-size: 18px;
+}
+#searchBar input {
+    flex: 1;
+    height: 32px;
+    padding: 0 28px 0 6px;
+    background: none;
+    border: none;
+    outline: none;
+}
+#searchBar button {
+    margin-left: 12px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+#searchTab {
+    color: #fff;
+}
+
+</style>
+
+<script>
+
+let loadPage = () => { 
+    let container = document.querySelector('#container');
+
+    buildNav('').then(navDOM => {
+        container.prepend(navDOM);
+    });
+
+    buildPeopleList('').then(peopleListDOM => {
+        document.querySelector('.wall').appendChild(peopleListDOM);
+    });
+}
+
+validateAuth().then(loadPage);
+
+</script>
+
+</body>
+
+</html>

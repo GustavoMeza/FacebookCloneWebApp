@@ -1,23 +1,29 @@
-.commentComposer {
-    padding: 8px;    
+.postComposer {
+    padding: 10px;    
     display: flex;
+    background-color: #fff;
 }
 
-.commentContentContainer {
+.postComposer img {
+    width: 40px;
+    height: 40px;
+}
+
+.postContentContainer {
     border-radius: 18px;
     padding: 8px;
     border: 1px solid #ddd;
     flex: 1;
 }
 
-.commentContent {
+.postComposer .postContent {
     height: 22px;
     border: none;
     outline: none;
     width: 100%;
 }
 
-.submitComment {
+.submitPost {
     color: #ccc;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -26,5 +32,5 @@
     height: 38px;
     padding: 0px 9px;
     outline: none;
-    cursor:pointer;
+    cursor: pointer;
 }

@@ -1,0 +1,44 @@
+.profile {
+    background-color: #fff;
+    text-align: center;
+    padding: 16px;
+}
+
+.profile img {
+    width: 131px;
+    height: 131px;
+    border-radius: 2px;
+    padding: 2px;
+    border: 1px solid #ddd;
+}
+
+.profile .name {
+    font-size: 24px;
+    padding: 16px;
+}
+
+.profile .actions {
+    display: flex;
+    justify-content: space-around;
+}
+
+.profile .addFriend {
+    font-size: 11px;
+    padding: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.profile .iconWrap {
+    width: 48px;
+    height: 48px;
+    background-color: #eee;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4px;
+}
+.profile i {
+    font-size: 30px;
+}

@@ -1,0 +1,12 @@
+.nav {
+    background: #3b5998;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav i {
+    font-size: 30px;
+    cursor: pointer;
+}

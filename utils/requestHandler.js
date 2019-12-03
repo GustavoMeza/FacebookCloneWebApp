@@ -9,22 +9,40 @@ let getCookie = name => {
 
 let getJwt = () => getCookie("jwt");
 
-getFromApi = resource => {
+let getFromApi = resource => {
     let jwt = getJwt();
     let config = {
         headers: {
             "Authorization": `Bearer ${jwt}`,
         }
     }
-    return fetch(`${resource}`, config);
+    return fetch(`${resource}`, config)
+        .then( res => {
+            if(res.status == 401) {
+                window.location.href = "http://127.0.0.1:8000/signin.html";
+            }
+            return res;
+        });
 }
 
-getJsonFromApi = resource => {
+let getUserId = () => {};
+
+let validateAuth = () => {
+    return getFromApi('https://127.0.0.1:5001/Authentication/Validate')
+        .then(res => {
+            return res.text();
+        })
+        .then(userId => {
+            getUserId = () => userId;
+        });
+}
+
+let getJsonFromApi = resource => {
     return getFromApi(resource)
         .then(res => res.json());
 }
 
-postJsonToApi = (resource, data) => {
+let postJsonToApi = (resource, data) => {
     let jwt = getJwt();
     let configs = {
         method: 'POST',

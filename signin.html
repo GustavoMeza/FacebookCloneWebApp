@@ -1,0 +1,80 @@
+<html>
+
+<head>
+<title>Signin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="components/nav/style.css" />
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="sign_style.css" />
+</head>
+
+<body style="background-color:#eef;">
+
+<div class="container">
+<div class="nav">
+    <div class="fblogo"></div>
+</div>
+<div class="main">
+    <div>
+        <div class="inputWrap">
+            <input id="email" type="text" placeholder="Correo electr&oacute;nico">
+            <div class="divider"></div>
+            <input id="password" type="password" placeholder="Contrase&ntilde;a">
+        </div>
+
+        <button id="signIn">Entrar</button>
+    </div>
+
+    <div class="dividerWrap">
+    <div class="divider"></div>
+    <div id="oWrap">o</div>
+    <div class="divider"></div>
+    </div>
+
+    <div class="signUpWrap">
+        <button id="signUp">Crear cuenta nueva</button>
+    </div>
+</div>
+
+</div>
+
+<script>
+
+let signInDOM = document.querySelector('#signIn');
+let emailDOM = document.querySelector('#email');
+let passwordDOM = document.querySelector('#password');
+
+signInDOM.onclick = () => {
+    let user = {
+        email: emailDOM.value,
+        password: passwordDOM.value,
+    };
+    let config = {
+        method: 'POST',
+        body: JSON.stringify(user),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+    fetch('https://127.0.0.1:5001/Authentication/Signin', config)
+        .then(res => {
+            return res.text()
+        })
+        .then(token => {
+            document.cookie = `jwt=${token};max-age=${60*60}`;
+            window.location.href="http://127.0.0.1:8000/index.html";
+        });
+};
+
+let signUpDOM = document.querySelector('#signUp');
+
+signUpDOM.onclick = () => {
+    window.location.href = "http://127.0.0.1:8000/signup.html";
+};
+
+</script>
+
+</body>
+
+</html>

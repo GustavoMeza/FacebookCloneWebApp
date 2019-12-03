@@ -1,0 +1,60 @@
+.fblogo {
+    background-image: url(res/fbicon.png);
+    width: 102px;
+    height: 22px;
+    background-size: 103px 328px;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+.main {
+    max-width: 416px;
+    margin: auto;
+    padding: 16px;
+}
+.inputWrap {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    margin-bottom: 12px;
+}
+input {
+    background: none;
+    border: none;
+    width: 100%;
+    padding: 12px;
+}
+button {
+    height: 36px;
+    border:  none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    padding: 0 16px;
+    cursor: pointer;
+}
+#signIn {
+    width: 100%;
+    background-color: #17f;
+}
+.dividerWrap {
+    margin:  16px 0;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+}
+.divider {
+    flex: 1;
+    background-color:#ccc;
+    height: 1px;
+}
+#oWrap {
+    margin: 0 12px;
+}
+.signUpWrap {
+    width: 100%;
+    display:flex;
+    justify-content:space-around;
+}
+#signUp {
+    background-color: #0a0;
+}

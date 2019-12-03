@@ -35,14 +35,7 @@ let postConfig = {
                 userId: getUserId(),
                 postId: model.id,
             };
-            let config = {
-                method: "POST",
-                body: JSON.stringify(like),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            };
-            fetch('https://127.0.0.1:5001/likes', config);
+            postJsonToApi('https://127.0.0.1:5001/likes', like);
         };
         buildCommentList(model.id).then(commentListDOM => {
             view.replaceChild(commentListDOM, commentListPlaceholder);

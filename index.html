@@ -3,6 +3,7 @@
 <head>
 <title>News</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="style.css" />
 <link rel="stylesheet" type="text/css" href="components/avatar/style.css" />
@@ -11,6 +12,9 @@
 <link rel="stylesheet" type="text/css" href="components/comment/style.css" />
 <link rel="stylesheet" type="text/css" href="components/commentComposer/style.css" />
 <link rel="stylesheet" type="text/css" href="components/post/style.css" />
+<link rel="stylesheet" type="text/css" href="components/postComposer/style.css" />
+<link rel="stylesheet" type="text/css" href="components/nav/style.css" />
+<link rel="stylesheet" type="text/css" href="components/wall/style.css" />
 <script src="utils/requestHandler.js"></script>
 <script src="utils/componentBuilder.js"></script>
 <script src="components/avatar/controller.js"></script>
@@ -22,24 +26,29 @@
 <script src="components/post/controller.js"></script>
 <script src="components/postComposer/controller.js"></script>
 <script src="components/wall/controller.js"></script>
+<script src="components/nav/controller.js"></script>
 </head>
 
 <body>
 
 <div id="container"> </div>
 
-<script>
+<style>
+#newsTab {
+    color: #fff;
+}
+</style>
 
-let getUserId = () => 0;
+<script>
 
 let loadPage = () => {
     let container = document.querySelector('#container');
 
     let userId = getUserId();
 
-    buildPostComposer(userId)
-        .then(postComposerDOM => {
-            container.appendChild(postComposerDOM);
+    buildNav('')
+        .then(navDOM => {
+            container.appendChild(navDOM);
         });
 
     buildWall(userId)
@@ -48,18 +57,7 @@ let loadPage = () => {
         });
 };
 
-getFromApi('https://127.0.0.1:5001/Authentication/Validate')
-    .then( res => {
-        if(res.status == 401) {
-            window.location.href = "http://127.0.0.1:8000/login.html";
-        }
-        return res.text();
-    })
-    .then( userId => {
-        getUserId = () => userId;
-        loadPage();
-    });
-
+validateAuth().then(loadPage);
 
 </script>
 
